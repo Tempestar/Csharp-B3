@@ -8,12 +8,6 @@ namespace Quiz
 
     public class Program
     {
-        public string Question { get; set; }
-        public string Answer { get; set; }
-    }
-
-    public class Program
-    {
         static Random rnd = new Random();
         private string question;
         private string answer;
