@@ -14,6 +14,7 @@ namespace Quiz
             string answer;
 
             //On crée les questions/réponses
+
             List<string> quizQuestions = new List<string> {
             "Quelle est la taille d'un bison adulte ?\na) 1m80\nb) 2m\nc) 2m20\n",
             "D'où viennent les bisons ?\na) Asie\nb) Amérique\nc) Océanie\n",
@@ -27,7 +28,7 @@ namespace Quiz
             "Comment les bisons se défendent-ils contre des prédateurs ?\na) Ils font le mort\nb) Ils intimident\nc) Ils chargent leurs ennemis\n"
             };
 
-            
+
             // Demandez à l'utilisateur combien de questions il souhaite répondre
             Console.WriteLine("À combien de questions souhaitez-vous répondre ?\n");
             int nbQuestions = int.Parse(Console.ReadLine());
@@ -36,39 +37,249 @@ namespace Quiz
             var time = new System.Diagnostics.Stopwatch();
             time.Start();
 
-            Console.WriteLine(quizQuestions[0]);
-            answer = Console.ReadLine();
-
-            if (answer == "a")
-            {
-                Console.WriteLine("Bonne réponse !\n");
-                score++;
-            }
-            else
-            {
-                Console.WriteLine("Mauvaise réponse. La bonne réponse était Paris.\n");
-            }
-
-            /*
-            // Posez des questions et vérifiez les réponses
             for (int i = 0; i < nbQuestions; i++)
             {
-                
-            }*/
+                int rand_num = rnd.Next(quizQuestions.Count);
+                Console.WriteLine(quizQuestions[rand_num]);
+
+                answer = Console.ReadLine();
+
+                if (answer == "c")
+                {
+                    Console.WriteLine("Bonne réponse !\n");
+                    score++;
+                }
+                else
+                {
+                    Console.WriteLine("Mauvaise réponse.\n");
+                }
+
+                /*
+                switch (rand_num)
+                {
+                    case 0:
+                        do
+                        {
+                            Console.WriteLine(quizQuestions[rand_num]);
+
+                            answer = Console.ReadLine();
+
+                            if (answer == "a")
+                            {
+                                Console.WriteLine("Bonne réponse !\n");
+                                score++;
+                            }
+                            else if (answer == "b" | answer == "c")
+                            {
+                                Console.WriteLine("Mauvaise réponse.\n");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Veuillez entrer une valeur correcte");
+                            }
+                        }
+                        while (answer != "a" | answer != "b" | answer != "c");
+                        break;
+                    case 1:
+                        do
+                        {
+                            Console.WriteLine(quizQuestions[rand_num]);
+                            answer = Console.ReadLine();
+                            if (answer == "b")
+                            {
+                                Console.WriteLine("Bonne réponse !\n");
+                                score++;
+                            }
+                            else if (answer == "a" | answer == "c")
+                            {
+                                Console.WriteLine("Mauvaise réponse.\n");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Veuillez entrer une valeur correcte");
+                            }
+                        }
+                        while (answer != "a" | answer != "b" | answer != "c");
+                        break;
+                    case 2:
+                        do
+                        {
+                            Console.WriteLine(quizQuestions[rand_num]);
+                            answer = Console.ReadLine();
+                            if (answer == "a")
+                            {
+                                Console.WriteLine("Bonne réponse !\n");
+                                score++;
+                            }
+                            else if (answer == "b" | answer == "c")
+                            {
+                                Console.WriteLine("Mauvaise réponse.\n");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Veuillez entrer une valeur correcte");
+                            }
+                        }
+                        while (answer != "a" | answer != "b" | answer != "c");
+                        break;
+                    case 3:
+                        do
+                        {
+                            Console.WriteLine(quizQuestions[rand_num]);
+                            answer = Console.ReadLine();
+                            if (answer == "c")
+                            {
+                                Console.WriteLine("Bonne réponse !\n");
+                                score++;
+                            }
+                            else if (answer == "a" | answer == "b")
+                            {
+                                Console.WriteLine("Mauvaise réponse.\n");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Veuillez entrer une valeur correcte");
+                            }
+                        }
+                        while (answer != "a" | answer != "b" | answer != "c");
+                        break;
+                    case 4:
+                        do
+                        {
+                            Console.WriteLine(quizQuestions[rand_num]);
+                            answer = Console.ReadLine();
+                            if (answer == "c")
+                            {
+                                Console.WriteLine("Bonne réponse !\n");
+                                score++;
+                            }
+                            else if (answer == "a" | answer == "b")
+                            {
+                                Console.WriteLine("Mauvaise réponse.\n");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Veuillez entrer une valeur correcte");
+                            }
+                        }
+                        while (answer != "a" | answer != "b" | answer != "c");
+                        break;
+                    case 5:
+                        do
+                        {
+                            Console.WriteLine(quizQuestions[rand_num]);
+                            answer = Console.ReadLine();
+                            if (answer == "a")
+                            {
+                                Console.WriteLine("Bonne réponse !\n");
+                                score++;
+                            }
+                            else if (answer == "b" | answer == "c")
+                            {
+                                Console.WriteLine("Mauvaise réponse.\n");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Veuillez entrer une valeur correcte");
+                            }
+                        }
+                        while (answer != "a" | answer != "b" | answer != "c");
+                        break;
+                    case 6:
+                        do
+                        {
+                            Console.WriteLine(quizQuestions[rand_num]);
+                            answer = Console.ReadLine();
+                            if (answer == "b")
+                            {
+                                Console.WriteLine("Bonne réponse !\n");
+                                score++;
+                            }
+                            else if (answer == "a" | answer == "c")
+                            {
+                                Console.WriteLine("Mauvaise réponse.\n");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Veuillez entrer une valeur correcte");
+                            }
+                        }
+                        while (answer != "a" | answer != "b" | answer != "c");
+                        break;
+                    case 7:
+                        do
+                        {
+                            Console.WriteLine(quizQuestions[rand_num]);
+                            answer = Console.ReadLine();
+                            if (answer == "b")
+                            {
+                                Console.WriteLine("Bonne réponse !\n");
+                                score++;
+                            }
+                            else if (answer == "a")
+                            {
+                                Console.WriteLine("Mauvaise réponse.\n");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Veuillez entrer une valeur correcte");
+                            }
+                        }
+                        while (answer != "a" | answer != "b");
+                        break;
+                    case 8:
+                        do
+                        {
+                            Console.WriteLine(quizQuestions[rand_num]);
+                            answer = Console.ReadLine();
+                            if (answer == "c")
+                            {
+                                Console.WriteLine("Bonne réponse !\n");
+                                score++;
+                            }
+                            else if (answer == "a" | answer == "c")
+                            {
+                                Console.WriteLine("Mauvaise réponse.\n");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Veuillez entrer une valeur correcte");
+                            }
+                        }
+                        while (answer != "a" | answer != "b" | answer != "c");
+                        break;
+                    case 9:
+                        do
+                        {
+                            Console.WriteLine(quizQuestions[rand_num]);
+                            answer = Console.ReadLine();
+                            if (answer == "c")
+                            {
+                                Console.WriteLine("Bonne réponse !\n");
+                                score++;
+                            }
+                            else if (answer == "a" | answer == "c")
+                            {
+                                Console.WriteLine("Mauvaise réponse.\n");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Veuillez entrer une valeur correcte");
+                            }
+                        }
+                        while (answer != "a" | answer != "b" | answer != "c");
+                        break;
+                }
+                */
+
+            }
 
             // Arrêtez le chronomètre
             time.Stop();
 
             // Affichez le score final et le temps écoulé
-            Console.WriteLine("Votre score final est : " + score + " sur " + 1);//nbQuestions * 2);
+            Console.WriteLine("Votre score final est : " + score + " sur " + nbQuestions);
             Console.WriteLine("Temps écoulé : " + time.Elapsed);
-
-            /*
-            // Affichez un message de félicitations si le score est élevé
-            if (score >= nbQuestions * 1.5)
-            {
-                Console.WriteLine("Félicitations");
-            }*/
         }
     }
 }
