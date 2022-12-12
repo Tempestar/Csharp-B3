@@ -19,6 +19,7 @@ namespace Quiz
             string answer;
             Random rand_num = new Random();
 
+            //On crée les questions
             Dictionary<string, string> quizQuestions = new Dictionary<string, string>
             {
                 { "Quelle est la taille d'un bison adulte ?\na) 1m80\nb) 2m\nc) 2m20\n", "a" },
@@ -34,15 +35,16 @@ namespace Quiz
             };
 
 
-            // Demandez à l'utilisateur combien de questions il souhaite répondre
+            //On demande à l'utilisateur combien de questions il souhaite répondre
             Console.WriteLine("À combien de questions souhaitez-vous répondre ?\n");
             int nbQuestions = int.Parse(Console.ReadLine());
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nChoisissez la bonne réponse en écrivant a, b ou c.\n");
 
-            // Démarrez un chronomètre
+            // On lance un chronomètre
             var time = new System.Diagnostics.Stopwatch();
             time.Start();
 
+            //On génère le quiz en posant les questions aléatoirement
             for (int i = 1; i < nbQuestions+1; i++)
             {
                 int index = rand_num.Next(quizQuestions.Count);
@@ -54,6 +56,7 @@ namespace Quiz
 
                 answer = Console.ReadLine();
 
+                //On check si l'utilisateur rentre les bonnes valeurs
                 while (true)
                 {
                     if (answer == "a" || answer == "b" || answer == "c")
@@ -67,6 +70,7 @@ namespace Quiz
                     }
                 }
                 
+                //On check si la réponse est bonne ou non
                 if (answer == pair.Value)
                 {
                     Console.WriteLine("Bonne réponse !\n");
@@ -81,10 +85,10 @@ namespace Quiz
 
             }
 
-            // Arrêtez le chronomètre
+            // On stoppe le chronomètre
             time.Stop();
 
-            // Affichez le score final et le temps écoulé
+            // On affiche le score final et le temps écoulé
             Console.WriteLine("Votre score final est : " + score + " sur " + nbQuestions);
             Console.WriteLine("Temps écoulé : " + time.Elapsed);
         }
