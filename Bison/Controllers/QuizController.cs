@@ -1,12 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
+using Microsoft.AspNetCore.Mvc;
+
+[Route("api/quiz")]
 namespace QuizBison.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class QuizController : ControllerBase
-    {
+public class QuizController : ControllerBase
+{
         private List<Question> questions;
         private int currentQuestion;
 
@@ -31,44 +34,35 @@ namespace QuizBison.Controllers
             currentQuestion = 0;
         }
 
-        [HttpGet]
-        public ActionResult<Question> GetQuestion()
+    [HttpGet]
+    [Route("questions")]
+    public IEnumerable<Question> GetQuestions()
+    {
+        // Retourne une liste de questions pour le quiz sur les bisons
+        return new List<Question>
         {
-            if (currentQuestion >= questions.Count)
-            {
-                return NoContent();
-            }
+            new Question { Text = "Quel est le nom scientifique du bison?", Answer = "Bison bison" },
+            new Question { Text = "Combien de temps un bison peut-il rester sous l'eau?", Answer = "Jusqu'à 5 minutes" },
+            new Question { Text = "Combien de temps un bison peut-il courir?", Answer = "Jusqu'à 40 km/h pendant une courte distance" },
+        };
+    }
+    // Ajoutez une méthode pour gérer les réponses du quiz
+    [HttpPost]
+    public ActionResult<bool> SubmitAnswer(Answer answer)
+    {
+        // Vérifie si la réponse est correcte et retourne un booléen indiquant si elle est correcte ou non
+        return answer.Text == "Bison bison";
+    }
 
-            return Ok(questions[currentQuestion]);
-        }
+    public class Question
+    {
+        public string Text { get; set; }
+        public string Answer { get; set; }
+    }
 
-        [HttpPost]
-        public ActionResult<Answer> SubmitAnswer(int index)
-        {
-            var result = new Answer();
-            result.Correct = questions[currentQuestion].CorrectAnswer == index;
-            result.NextQuestion = questions.Count > currentQuestion + 1;
-
-            if (result.Correct)
-            {
-                currentQuestion++;
-            }
-
-            return Ok(result);
-        }
-
-        public class Question
-        {
-            public string Text { get; set; }
-            public List<string> Answers { get; set; }
-            public int CorrectAnswer { get; set; }
-        }
-
-        public class Answer
-        {
-            public bool Correct { get; set; }
-            public bool NextQuestion { get; set; }
-        }
+    public class Answer
+    {
+        public string Text { get; set; }
     }
 
 
