@@ -1,6 +1,6 @@
 # Quiz Bison
 
-## Application consolee
+## Application console (Branche console_bison)
 
 L'appliation possède 10 questions/réponses en dur dans un dictionary. 
 
